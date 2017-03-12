@@ -1,21 +1,22 @@
+var ce = {};
 
-var celements = {};
-
-celements.options = {
+ce.options = {
   canvasID : "", //ID of the Canvas-Object
   context2D : "",  //Canvas-Context
   fps : 30, //Mainloop-FPS (Setting)
-  realfps : 0 //Mainloop-FPS (Setting)
+  realfps : 0, //Mainloop-FPS (Setting)
+  width:0, //Canvas-Element (width + height)
+  height:0
 };
 
-celements.Image = function(src)
+ce.Image = function(src)
 {
   this.path = src;
   this.imgobj = undefined;
   return this;
 }
 
-celements.Image.prototype.load = function(path)
+ce.Image.prototype.load = function(path)
 {
    this.path = path;
    this.imgobj = new Image();
@@ -23,44 +24,74 @@ celements.Image.prototype.load = function(path)
    return this;
 }
 
-celements.screen = {
+ce.controls = {
+currentkey : NaN,
+keycodes : function(event){
+ce.controls.currentkey = event.keyCode;
+},
+read : function()
+{
+  return ce.controls.currentkey;
+},
+clear : function()
+{
+  ce.controls.currentkey = NaN;
+}
+};
+ce.screen = {
   lasftframeTimestamp : new Date().getTime(),
   fillRect : function(x,y,w,h,color)
   {
-        celements.options.context2D.fillStyle=color;
-        celements.options.context2D.fillRect(x,y,w,h);
+        ce.options.context2D.fillStyle=color;
+        ce.options.context2D.fillRect(x,y,w,h);
   },
-  clear : function()
+  clear : function(color)
   {
-    celements.options.context2D.clearRect(0, 0, 480, 272);
+  ce.screen.fillRect(0,0,ce.options.width,ce.options.height,color);
   },
   loop : function(fps,func)
   {
-    celements.options.fps = fps;
+    ce.options.fps = fps;
     setInterval(function(){
-
-    celements.options.realfps = 1000/(new Date().getTime()-celements.screen.lasftframeTimestamp);
-
+    ce.options.realfps = Math.round(1000/(new Date().getTime()-ce.screen.lasftframeTimestamp));
+    ce.screen.lasftframeTimestamp = new Date().getTime();
     func();
   },
-     1000/celements.options.fps);
+     1000/ce.options.fps);
   },
   blit : function(x,y,image)
   {
-    celements.screen.lasftframeTimestamp = new Date().getTime();
-    celements.options.context2D.drawImage(image.imgobj,x,y);
+    ce.options.context2D.drawImage(image.imgobj,x,y);
   },
-  init : function(id)
+  tile : function(x,y,image,img_x,img_y,img_width,img_height,width,height)
   {
-    celements.options.canvasID = id;
-    document.getElementById(id).width  = 480;
-    document.getElementById(id).height = 272;
-    celements.options.context2D = document.getElementById(id).getContext("2d");
+    ce.options.context2D.drawImage(image.imgobj,img_x,img_y,img_width,img_height,x,y,width,height);
+  },
+  init : function(id,width,height)
+  {
+    ce.options.canvasID = id;
+    ce.options.width = width;
+    ce.options.height = height;
+    document.getElementById(id).width  = width;
+    document.getElementById(id).height = height;
+    ce.options.context2D = document.getElementById(id).getContext("2d");
   },
   print  : function(x,y,text,color)
   {
-    celements.options.context2D.fillStyle=color;
-    celements.options.context2D.font = "10px Verdana";
-    celements.options.context2D.fillText(text,x,y);
+    ce.options.context2D.fillStyle=color;
+    ce.options.context2D.font = "10px Verdana";
+    ce.options.context2D.fillText(text,x,y);
   }
 };
+
+//Keyboard-Event-Listener
+if (window.addEventListener)
+{
+   window.addEventListener("keydown", ce.controls.keycodes, false);
+   window.addEventListener("keyup", ce.controls.clear, false);
+ }
+else if (window.attachEvent)
+{
+   window.attachEvent("onkeydown", ce.controls.keycodes);
+    window.attachEvent("onkeyup", ce.controls.clear);
+}
