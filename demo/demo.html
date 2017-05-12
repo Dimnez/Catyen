@@ -59,9 +59,9 @@
         ce.screen.loop(60, function() {
 
             //User: Keyboard-Actions
-            if (ce.controls.read() == 40)
+            if (ce.controls.isPressed(ce.DOWN))
                 player.y += player.speed;
-            else if (ce.controls.read() == 38)
+            else if (ce.controls.isPressed(ce.UP))
                 player.y -= player.speed;
 
             ce.screen.clear("black");
