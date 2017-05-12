@@ -1,5 +1,15 @@
 var ce = {};
 
+ce.LEFT = 39;
+ce.RIGHT = 37;
+ce.UP = 38;
+ce.DOWN = 40;
+ce.ENTER = 13;
+ce.SPACE = 32;
+ce.ESCAPE = 27;
+ce.SHIFT = 16;
+
+
 ce.options = {
   canvasID : "", //ID of the Canvas-Object
   context2D : "",  //Canvas-Context
@@ -25,18 +35,21 @@ ce.Image.prototype.load = function(path)
 }
 
 ce.controls = {
-currentkey : NaN,
-keycodes : function(event){
-ce.controls.currentkey = event.keyCode;
-},
-read : function()
-{
-  return ce.controls.currentkey;
-},
-clear : function()
-{
-  ce.controls.currentkey = NaN;
-}
+	currentkeys : new Set(),
+	keydown : function(event){
+		ce.controls.currentkeys.add(event.keyCode);
+	},
+	read : function()
+	{
+		return ce.controls.currentkeys;
+	},
+	isPressed : function(keyCode) {
+		return ce.controls.currentkeys.has(keyCode);
+	},
+	keyup : function()
+	{
+		ce.controls.currentkeys.delete(event.keyCode);
+	}
 };
 ce.screen = {
   lasftframeTimestamp : new Date().getTime(),
@@ -87,11 +100,11 @@ ce.screen = {
 //Keyboard-Event-Listener
 if (window.addEventListener)
 {
-   window.addEventListener("keydown", ce.controls.keycodes, false);
-   window.addEventListener("keyup", ce.controls.clear, false);
+   window.addEventListener("keydown", ce.controls.keydown, false);
+   window.addEventListener("keyup", ce.controls.keyup, false);
  }
 else if (window.attachEvent)
 {
-   window.attachEvent("onkeydown", ce.controls.keycodes);
-    window.attachEvent("onkeyup", ce.controls.clear);
+   window.attachEvent("onkeydown", ce.controls.keydown);
+    window.attachEvent("onkeyup", ce.controls.keyup);
 }
