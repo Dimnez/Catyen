@@ -1,17 +1,21 @@
 <html>
 
 <head>
-    <script src="../celements/main.js" type="text/javascript"></script>
+    <script src="../celements/CanvasElement.js" type="text/javascript"></script>
+    <script src="../celements/Tile.js" type="text/javascript"></script>
+    <script src="../celements/Animation.js" type="text/javascript"></script>
 </head>
 
 <body>
 
-    <canvas id="screen" style="width:100%;height:100%;position:absolute;top:0px;left:0px;"></canvas>
+    <canvas id="screen" width="480" height="272" style="width:100%;height:100%;position:absolute;top:0px;left:0px;"></canvas>
     <script type="text/javascript">
 
-        ce.screen.init("screen",480,272);
+        var ce = new CanvasElement("screen");
 
-        var demoimg = new ce.Image().load("bg.jpg");
+        var demoimg = new Tile("bg.jpg");
+        
+        var anim = new Animation("bomb.png", 240);
 
         var slide_x = 0;
 
@@ -56,23 +60,25 @@
         };
 
         //Main-loop with 60fps
-        ce.screen.loop(60, function() {
+        ce.loop(function(c) {
 
             //User: Keyboard-Actions
-            if (ce.controls.isPressed(ce.DOWN))
+            if (c.isPressed(keys.DOWN))
                 player.y += player.speed;
-            else if (ce.controls.isPressed(ce.UP))
+            else if (c.isPressed(keys.UP))
                 player.y -= player.speed;
 
-            ce.screen.clear("black");
+            c.clear("black");
 
-            ce.screen.fillRect(player.x, player.y, 30, 100, "blue");
-            ce.screen.fillRect(ball.x, ball.y, 10, 10, "black");
-            ce.screen.fillRect(442, ball.y, 30, 100, "red");
+            c.fillRect(player.x, player.y, 30, 100, "blue");
+            c.fillRect(ball.x, ball.y, 10, 10, "black");
+            c.fillRect(442, ball.y, 30, 100, "red");
 
-           ce.screen.print(420, 270, ce.options.realfps + " FPS", "white");
+           	c.print(420, 270, c.realFps + " FPS", "white");
 
             ball.calc();
+           
+           	c.tile(120,20, anim);
 
         });
     </script>
