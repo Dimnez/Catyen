@@ -14,19 +14,18 @@
         var ce = new CanvasElement("screen");
 
         var demoimg = new Tile("bg.jpg");
-        
+
         var anim = new Animation("bomb.png", 240);
 
         var slide_x = 0;
 
         var ball = {
             x: 100,
-            y: 100,
+            y: 120,
             ymode: "down",
             xmode: "up",
             speed: 10,
             calc: function() {
-
                 //moves
                 if (ball.ymode == "up")
                     ball.y -= ball.speed;
@@ -71,14 +70,13 @@
             c.clear("black");
 
             c.fillRect(player.x, player.y, 30, 100, "blue");
-            c.fillRect(ball.x, ball.y, 10, 10, "black");
             c.fillRect(442, ball.y, 30, 100, "red");
 
            	c.print(420, 270, c.realFps + " FPS", "white");
 
             ball.calc();
-           
-           	c.tile(120,20, anim);
+
+           	c.tile(ball.x,ball.y, anim);
 
         });
     </script>
