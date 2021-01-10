@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     entry: path.join(__dirname, '/src/canvasElements.ts'),
     output: {
-        filename: 'index.js',
+        filename: 'dist/canvasElements-0.01.js',
         path: __dirname,
         library: "CE",
         libraryExport: 'default'
