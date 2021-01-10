@@ -21,5 +21,8 @@
     "bugs": {
         "url": "https://github.com/Dimnez/canvasElements/issues"
     },
-    "homepage": "https://github.com/Dimnez/canvasElements#readme"
+    "homepage": "https://github.com/Dimnez/canvasElements#readme",
+    "devDependencies": {
+        "@types/node": "^14.14.20"
+    }
 }

@@ -1,6 +1,6 @@
 import CEFeatureBase from './CEFeatureBase';
 
-enum KeyboardKeys {
+export enum KeyboardKeys {
 	LEFT = 39,
 	RIGHT = 37,
 	UP = 38,
@@ -13,15 +13,9 @@ enum KeyboardKeys {
 
 class CEControlsFeature extends CEFeatureBase
 {
-
     private currentKeys : Set<string> = new Set();
 
-    constructor()
-    {
-        super();
-    }
-
-    intialize()
+    initialize()
     {
         this.initialized = true;
     }
@@ -54,4 +48,4 @@ class CEControlsFeature extends CEFeatureBase
 
 }
 
-export CEControlsFeature;
+export default CEControlsFeature;
