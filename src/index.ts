@@ -1,1 +1,3 @@
-export * from './CanvasElements';
+import CE from "./CanvasElements"
+
+export default CE;

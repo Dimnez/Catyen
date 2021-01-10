@@ -7,13 +7,14 @@ class CELoopFeature extends CEFeatureBase
 
     setEvents(window: Window)
     {
-        if(this.requestFrameFunction)
+        if(this.requestFrameFunction && this.configuration.window)
         window.requestAnimationFrame((ts) => this.doRender(this.requestFrameFunction!));
     }
 
     requestFrame(requestFrameFunction : Function)
     {
         this.requestFrameFunction = requestFrameFunction;
+        this.setEvents(this.configuration.window!);
     }
 
     doRender(requestFrameFunction : Function)

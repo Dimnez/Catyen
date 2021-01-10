@@ -1,4 +1,3 @@
-import CE from "../CanvasElements"
 import CEConfiguration from "../CEConfiguration";
 
 class CEFeatureBase
