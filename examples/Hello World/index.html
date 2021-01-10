@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <canvas id="canvasElement" width="480" height="272">
+
+    </canvas>
+
+    <script src="../../index.js"></script>
+    <script type="text/javascript">
+        let canvasElement = new CE("#canvasElement", window);
+
+        canvasElement.loop.requestFrame(() => {
+            canvasElement.draw.clear();
+            canvasElement.draw.print(20, 20, "Hello World", "white");
+        });
+    </script>
+</body>
+
+</html>
