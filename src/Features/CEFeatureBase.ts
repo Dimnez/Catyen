@@ -1,15 +1,17 @@
 import CE from "../CanvasElements"
+import CEConfiguration from "../CEConfiguration";
 
 class CEFeatureBase
 {
     public initialized : boolean=false;
-
-    constructor()
+    public configuration : CEConfiguration;
+    
+    constructor(configuration : CEConfiguration)
     {
-
+        this.configuration = configuration;
     }
 
-    intialize(window: Window)
+    initialize(window: Window)
     {
         this.setEvents(window);
     }
