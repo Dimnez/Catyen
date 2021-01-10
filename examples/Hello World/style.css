@@ -1,9 +1,11 @@
 body {
     background: black;
+    display: flex;
+    justify-content: center;
 }
 
 canvas {
-    width: 600px;
-    height: 400px;
-    margin: auto;
+    display: block;
+    align-self: center;
+    transform: translateY(calc(50vh - 136px));
 }
