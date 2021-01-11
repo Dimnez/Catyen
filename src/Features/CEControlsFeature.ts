@@ -1,4 +1,5 @@
 import CEFeatureBase from './CEFeatureBase';
+import CEConfiguration from '../CEConfiguration';
 
 export enum KeyboardKeys {
 	LEFT = 39,
@@ -13,7 +14,13 @@ export enum KeyboardKeys {
 
 class CEControlsFeature extends CEFeatureBase
 {
-    private currentKeys : Set<string> = new Set();
+    public currentKeys : Set<string> = new Set();
+
+    constructor(configuration : CEConfiguration)
+    {
+        super(configuration);
+        this.setEvents(configuration.window!);
+    }
 
     initialize()
     {
@@ -22,8 +29,8 @@ class CEControlsFeature extends CEFeatureBase
 
     setEvents(window: Window)
     {
-        window.addEventListener("keydown", this.keyDown, false);
-        window.addEventListener("keyup", this.keyUp, false);
+        window.addEventListener("keydown", this.keyDown.bind(this), false);
+        window.addEventListener("keyup", this.keyUp.bind(this), false);
     }
 
     keyDown(event : KeyboardEvent)

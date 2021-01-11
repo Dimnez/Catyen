@@ -22,11 +22,14 @@ class CE
         this.configuration.canvasElement2DContext = (canvasElement as HTMLCanvasElement).getContext("2d")!;
         this.configuration.window = window;
 
+        this.configuration.canvasElement2DContext.imageSmoothingEnabled = false;
+
         //Set feature attributes
         this.controls = new CEControlsFeature(this.configuration);
         this.draw = new CEDrawingsFeature(this.configuration); 
         this.loop = new CELoopFeature(this.configuration);
 
+        
         this.initialize();
     }
 

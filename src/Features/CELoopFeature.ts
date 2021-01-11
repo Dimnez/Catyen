@@ -7,8 +7,7 @@ class CELoopFeature extends CEFeatureBase
 
     setEvents(window: Window)
     {
-        if(this.requestFrameFunction && this.configuration.window)
-        window.requestAnimationFrame((ts) => this.doRender(this.requestFrameFunction!));
+        window.requestAnimationFrame(() => this.doRender());
     }
 
     requestFrame(requestFrameFunction : Function)
@@ -17,10 +16,13 @@ class CELoopFeature extends CEFeatureBase
         this.setEvents(this.configuration.window!);
     }
 
-    doRender(requestFrameFunction : Function)
+    doRender()
     {
         if(this.requestFrameFunction)
-        this.requestFrameFunction();
+        {
+            this.requestFrameFunction();
+        }
+        window.requestAnimationFrame(() => this.doRender());
     }
 }
 
