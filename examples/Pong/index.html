@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body style="display:flex;background:black;">
+
+    <canvas id="canvasElement" width="480" height="272" style="margin:auto;">
+
+    </canvas>
+
+    <script src="../../dist/release.js"></script>
+    <script type="text/javascript">
+        let canvasElement = new CE("#canvasElement", window);
+
+        let player = {
+            y: 0,
+            points: 0
+        };
+
+        let opponent = {
+            y: 0,
+            points: 0
+        };
+
+        let ball = {
+            x: 0,
+            y: 0,
+            speed: 3,
+            route: {
+                x: true,
+                y: true
+            }
+        };
+
+        const moveBall = () => {
+            ball.x += (ball.route.x ? ball.speed : ball.speed * -1);
+            ball.y += (ball.route.y ? ball.speed : ball.speed * -1);
+
+            if (ball.x > 460 && ball.y >= opponent.y && ball.y <= opponent.y + 50)
+                ball.route.x = false;
+            else if (ball.x > 460 && !(ball.y >= opponent.y && ball.y <= opponent.y + 50)) {
+                player.points++;
+                ball.x = 200;
+                ball.y = 100;
+            } else if (ball.y > 262)
+                ball.route.y = false;
+            else if (ball.y < 10)
+                ball.route.y = true;
+            else if (ball.x < 10 && ball.y >= player.y && ball.y <= player.y + 50)
+                ball.route.x = true;
+            else if (ball.x < 10 && !(ball.y >= player.y && ball.y <= player.y + 50)) {
+                opponent.points++;
+                ball.x = 200;
+                ball.y = 100;
+            }
+        }
+
+        canvasElement.loop.requestFrame(() => {
+
+            canvasElement.draw.clear('white');
+            canvasElement.draw.fillRect(ball.x, ball.y, 10, 10, 'black');
+            canvasElement.draw.fillRect(10, player.y, 10, 50, 'red');
+            canvasElement.draw.fillRect(460, opponent.y, 10, 50, 'blue');
+            canvasElement.draw.print(240, 20, `${player.points} : ${opponent.points}`, "black");
+
+            opponent.y = ball.y - 25;
+
+            moveBall();
+
+            if (canvasElement.controls.isPressed("ArrowDown") && player.y < 220) {
+                player.y += 2;
+            } else if (canvasElement.controls.isPressed("ArrowUp") && player.y > 0) {
+                player.y -= 2;
+            }
+
+        });
+    </script>
+</body>
+
+</html>
