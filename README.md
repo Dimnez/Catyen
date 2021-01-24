@@ -1,6 +1,6 @@
-# canvasElements
+# Catyen - (Ca)nvas (Ty)pescript (En)gine
 
-canvasElements is a lightweight wrapper to make the handling of canvas related *JavaScript* programming more easy.
+Catyen is a lightweight wrapper to make the handling of canvas related *JavaScript* programming more easy.
 
 ## Build
 
@@ -13,7 +13,7 @@ npx webpack
 ## Usage
 
 ```html
-<script src ="dist/canvasElements.js" type ="text/javascript"></script>
+<script src ="dist/release.js" type ="text/javascript"></script>
 ```
 
 ```js
