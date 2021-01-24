@@ -13,7 +13,7 @@ npx webpack
 ## Usage
 
 ```html
-<script src ="dist/canvasElements.js" type ="text/javascript"></script>
+<script src ="dist/release.js" type ="text/javascript"></script>
 ```
 
 ```js
