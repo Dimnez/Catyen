@@ -5,10 +5,10 @@ import LoopFeature from './Features/LoopFeature';
 
 class Catyen 
 {
-    private configuration : Configuration;
-    private controls : ControlsFeature;
-    private draw : DrawingsFeature;
-    private loop : LoopFeature;
+    public configuration : Configuration;
+    public controls : ControlsFeature;
+    public draw : DrawingsFeature;
+    public loop : LoopFeature;
 
     constructor(canvasElementQuerySelector : string,window : Window)
     {
