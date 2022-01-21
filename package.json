@@ -1,29 +1,33 @@
 {
-    "name": "catyen",
-    "version": "1.0.0",
-    "description": "lightweight wrapper for js canvas apps",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "prepublish": "tsc"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Dimnez/Catyen.git"
-    },
-    "keywords": [
-        "canvas",
-        "wrapper"
-    ],
-    "author": "Dimnez",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Dimnez/Catyen/issues"
-    },
-    "homepage": "https://github.com/Dimnez/Catyen#readme",
-    "devDependencies": {
-        "@types/node": "^14.14.20",
-        "typescript": "^4.1.3"
-    }
+  "name": "@catyen/catyen",
+  "version": "1.0.0",
+  "description": "lightweight wrapper for js canvas apps",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dimnez/Catyen.git"
+  },
+  "keywords": [
+    "canvas",
+    "wrapper"
+  ],
+  "author": "Dimnez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dimnez/Catyen/issues"
+  },
+  "homepage": "https://github.com/Dimnez/Catyen#readme",
+  "devDependencies": {
+    "@types/node": "^14.18.9",
+    "typescript": "^4.5.5"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {}
 }
