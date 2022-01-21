@@ -10,13 +10,13 @@
 
 <body style="display:flex;background:black;">
 
-    <canvas id="canvasElement" width="480" height="272" style="margin:auto;">
+    <canvas id="screen" width="480" height="272" style="margin:auto;">
 
     </canvas>
 
     <script src="../../dist/release.js"></script>
     <script type="text/javascript">
-        let canvasElement = new CE("#canvasElement", window);
+        const screen = new CE("#screen", window);
 
         let player = {
             y: 0,
@@ -61,21 +61,21 @@
             }
         }
 
-        canvasElement.loop.requestFrame(() => {
+        screen.loop.requestFrame(() => {
 
-            canvasElement.draw.clear('white');
-            canvasElement.draw.fillRect(ball.x, ball.y, 10, 10, 'black');
-            canvasElement.draw.fillRect(10, player.y, 10, 50, 'red');
-            canvasElement.draw.fillRect(460, opponent.y, 10, 50, 'blue');
-            canvasElement.draw.print(240, 20, `${player.points} : ${opponent.points}`, "black");
+            screen.draw.clear('white');
+            screen.draw.fillRect(ball.x, ball.y, 10, 10, 'black');
+            screen.draw.fillRect(10, player.y, 10, 50, 'red');
+            screen.draw.fillRect(460, opponent.y, 10, 50, 'blue');
+            screen.draw.print(240, 20, `${player.points} : ${opponent.points}`, "black");
 
             opponent.y = ball.y - 25;
 
             moveBall();
 
-            if (canvasElement.controls.isPressed("ArrowDown") && player.y < 220) {
+            if (screen.controls.isPressed("ArrowDown") && player.y < 220) {
                 player.y += 2;
-            } else if (canvasElement.controls.isPressed("ArrowUp") && player.y > 0) {
+            } else if (screen.controls.isPressed("ArrowUp") && player.y > 0) {
                 player.y -= 2;
             }
 

@@ -1,3 +1,3 @@
-import CE from "./CanvasElements"
+import Catyen from "./Catyen"
 
-export default CE;
+export default Catyen;

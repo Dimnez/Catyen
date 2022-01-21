@@ -10,17 +10,17 @@
 
 <body>
 
-    <canvas id="canvasElement" width="480" height="272">
+    <canvas id="screen" width="480" height="272">
 
     </canvas>
 
-    <script src="../../index.js"></script>
+    <script src="../dist/release.js"></script>
     <script type="text/javascript">
-        let canvasElement = new CE("#canvasElement", window);
+        const screen = new CE("#screen", window);
 
-        canvasElement.loop.requestFrame(() => {
-            canvasElement.draw.clear();
-            canvasElement.draw.print(20, 20, "Hello World", "white");
+        screen.loop.requestFrame(() => {
+            screen.draw.clear();
+            screen.draw.print(20, 20, "Hello World", "white");
         });
     </script>
 </body>

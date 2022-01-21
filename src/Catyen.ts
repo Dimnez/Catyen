@@ -1,7 +1,7 @@
-import CEConfiguration from './CEConfiguration';
-import CEControlsFeature from './Features/CEControlsFeature';
-import CEDrawingsFeature from './Features/CEDrawingsFeature';
-import CELoopFeature from './Features/CELoopFeature';
+import CEConfiguration from './Configuration';
+import CEControlsFeature from './Features/ControlsFeature';
+import CEDrawingsFeature from './Features/DrawingsFeature';
+import CELoopFeature from './Features/LoopFeature';
 
 class CE 
 {

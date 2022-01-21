@@ -1,5 +1,5 @@
-import CEFeatureBase from './CEFeatureBase';
-import CEConfiguration from '../CEConfiguration';
+import FeatureBase from './FeatureBase';
+import Configuration from '../Configuration';
 
 export enum KeyboardKeys {
     LEFT = 39,
@@ -18,11 +18,11 @@ interface MouseState {
     mouseDown: boolean
 }
 
-class CEControlsFeature extends CEFeatureBase {
+class ControlsFeature extends FeatureBase {
     public currentKeys: Set<string> = new Set();
     public mouseState: MouseState = { clientX: 0, clientY: 0, mouseDown: false };
 
-    constructor(configuration: CEConfiguration) {
+    constructor(configuration: Configuration) {
         super(configuration);
         this.setEvents(configuration.window!);
     }
@@ -70,4 +70,4 @@ class CEControlsFeature extends CEFeatureBase {
 
 }
 
-export default CEControlsFeature;
+export default ControlsFeature;

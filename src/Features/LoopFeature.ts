@@ -1,6 +1,6 @@
-import CEFeatureBase from './CEFeatureBase';
+import FeatureBase from './FeatureBase';
 
-class CELoopFeature extends CEFeatureBase
+class LoopFeature extends FeatureBase
 {
 
     private requestFrameFunction?: Function;
@@ -26,4 +26,4 @@ class CELoopFeature extends CEFeatureBase
     }
 }
 
-export default CELoopFeature;
+export default LoopFeature;

@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: path.join(__dirname, '/src/canvasElements.ts'),
+    entry: path.join(__dirname, '/src/Catyen.ts'),
     output: {
         filename: 'dist/release.js',
         path: __dirname,

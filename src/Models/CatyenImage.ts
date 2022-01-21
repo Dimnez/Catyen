@@ -1,4 +1,4 @@
-class CEImage
+class CatyenImage
 {
     public imageObject : HTMLImageElement;
 
@@ -9,4 +9,4 @@ class CEImage
     }
 }
 
-export default CEImage;
+export default CatyenImage;

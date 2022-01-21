@@ -1,7 +1,7 @@
-import CEFeatureBase from './CEFeatureBase';
-import CEImage from '../Models/CEImage';
+import CEFeatureBase from './FeatureBase';
+import CEImage from '../Models/CatyenImage';
 
-class CEDrawingsFeature extends CEFeatureBase
+class DrawingsFeature extends CEFeatureBase
 {
     initialize()
     {
@@ -31,4 +31,4 @@ class CEDrawingsFeature extends CEFeatureBase
     }    
 }
 
-export default CEDrawingsFeature;
+export default DrawingsFeature;

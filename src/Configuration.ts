@@ -1,4 +1,4 @@
-export default class CEConfiguration {
+export default class Configuration {
     
     public htmlCanvasElement! : HTMLCanvasElement;
     public canvasElement2DContext! : CanvasRenderingContext2D;

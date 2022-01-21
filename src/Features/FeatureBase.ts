@@ -1,11 +1,11 @@
-import CEConfiguration from "../CEConfiguration";
+import Configuration from "../Configuration";
 
 class CEFeatureBase
 {
     public initialized : boolean=false;
-    public configuration : CEConfiguration;
+    public configuration : Configuration;
     
-    constructor(configuration : CEConfiguration)
+    constructor(configuration : Configuration)
     {
         this.configuration = configuration;
     }
