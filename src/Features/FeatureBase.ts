@@ -1,6 +1,6 @@
 import Configuration from "../Configuration";
 
-class CEFeatureBase
+class FeatureBase
 {
     public initialized : boolean=false;
     public configuration : Configuration;
@@ -21,4 +21,4 @@ class CEFeatureBase
     }
 }
 
-export default CEFeatureBase;
+export default FeatureBase;

@@ -1,21 +1,21 @@
-import CEConfiguration from './Configuration';
-import CEControlsFeature from './Features/ControlsFeature';
-import CEDrawingsFeature from './Features/DrawingsFeature';
-import CELoopFeature from './Features/LoopFeature';
+import Configuration from './Configuration';
+import ControlsFeature from './Features/ControlsFeature';
+import DrawingsFeature from './Features/DrawingsFeature';
+import LoopFeature from './Features/LoopFeature';
 
-class CE 
+class Catyen 
 {
-    private configuration : CEConfiguration;
-    private controls : CEControlsFeature;
-    private draw : CEDrawingsFeature;
-    private loop : CELoopFeature;
+    private configuration : Configuration;
+    private controls : ControlsFeature;
+    private draw : DrawingsFeature;
+    private loop : LoopFeature;
 
     constructor(canvasElementQuerySelector : string,window : Window)
     {
         const canvasElement : Element = document.querySelector(canvasElementQuerySelector)!;
 
         //Basic configuration
-        this.configuration = new CEConfiguration();
+        this.configuration = new Configuration();
         this.configuration.htmlCanvasElement = canvasElement as HTMLCanvasElement;
         this.configuration.canvasWidth = canvasElement.clientWidth;
         this.configuration.canvasHeight = canvasElement.clientHeight;
@@ -25,9 +25,9 @@ class CE
         this.configuration.canvasElement2DContext.imageSmoothingEnabled = false;
 
         //Set feature attributes
-        this.controls = new CEControlsFeature(this.configuration);
-        this.draw = new CEDrawingsFeature(this.configuration); 
-        this.loop = new CELoopFeature(this.configuration);
+        this.controls = new ControlsFeature(this.configuration);
+        this.draw = new DrawingsFeature(this.configuration); 
+        this.loop = new LoopFeature(this.configuration);
 
         
         this.initialize();
@@ -41,4 +41,4 @@ class CE
     }
 }
 
-export default CE;
+export default Catyen;
