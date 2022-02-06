@@ -29,6 +29,15 @@ class DrawingsFeature extends CEFeatureBase
         this.configuration.canvasElement2DContext.fillStyle = color;
         this.configuration.canvasElement2DContext.fillText(text, x, y);
     }    
+
+    line(x : number, y : number, tx : number, ty : number, color : string) { 
+        this.configuration.canvasElement2DContext.fillStyle = color;
+        this.configuration.canvasElement2DContext.beginPath();
+        this.configuration.canvasElement2DContext.moveTo(x, y);
+        this.configuration.canvasElement2DContext.lineTo(tx, ty);
+        this.configuration.canvasElement2DContext.stroke();
+    }    
+
 }
 
 export default DrawingsFeature;
