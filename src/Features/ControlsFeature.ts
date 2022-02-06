@@ -2,7 +2,7 @@ import FeatureBase from './FeatureBase';
 import Configuration from '../Configuration';
 
 export enum KeyboardKeys {
-    LEFT = "ArrowRLeft",
+    LEFT = "ArrowLeft",
     RIGHT ="ArrowRight",
     UP = "ArrowUp",
     DOWN = "ArrowDown",
