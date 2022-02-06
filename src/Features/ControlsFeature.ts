@@ -2,14 +2,14 @@ import FeatureBase from './FeatureBase';
 import Configuration from '../Configuration';
 
 export enum KeyboardKeys {
-    LEFT = 39,
-    RIGHT = 37,
-    UP = 38,
-    DOWN = 40,
-    ENTER = 13,
-    SPACE = 32,
-    ESCAPE = 27,
-    SHIFT = 16,
+    LEFT = "ArrowRLeft",
+    RIGHT ="ArrowRight",
+    UP = "ArrowUp",
+    DOWN = "ArrowDown",
+    ENTER = "Enter",
+    SPACE = "Space",
+    ESCAPE = "Escape",
+    SHIFT = "ShiftLeft",
 };
 
 interface MouseState {
