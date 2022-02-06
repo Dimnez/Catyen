@@ -30,6 +30,11 @@ catyen.loop.requestFrame(()=>{
 });
 ```
 
+## Quick Start
+
+The easyiest way to start is by using this [boilerplate](https://github.com/Dimnez/CatyenBoilerplate). 
+
+
 # Features
 
 ## Game loop
