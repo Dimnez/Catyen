@@ -63,11 +63,18 @@ catyen.loop.requestFrame(()=>{});
  catyen.draw.print(0,0,"Hello World","white");
 ```
 
-### Fill Rect 
+### Fill rect 
 
 ```ts
  catyen.draw.fillRect(10,10,10,10,"white");
 ```
+
+### Draw line 
+
+```ts
+ catyen.draw.line(10,10,10,10,"white");
+```
+
 
 ### Load and display images
 
@@ -78,6 +85,17 @@ catyen.loop.requestFrame(()=>{
     catyen.draw.blit(0,0,myImage);
 });
 ```
+
+### Rotate image
+
+```ts
+const myImage = new CatyenImage("./path/img.png");
+
+catyen.loop.requestFrame(()=>{
+    catyen.draw.blitAndRotate(0,0,myImage,90);
+});
+```
+
 
 ## Controls
 
