@@ -16,11 +16,11 @@ class DrawingsFeature extends CEFeatureBase {
 
     fillRectAndRotate(x: number, y: number,w : number,h:number, color : string, angle : number) {
         this.configuration.canvasElement2DContext.save();
-        this.configuration.canvasElement2DContext.translate(w * 0.5, h* 0.5);
+        this.configuration.canvasElement2DContext.translate(x+w * 0.5, y+h* 0.5);
         this.configuration.canvasElement2DContext.rotate(angle* 0.01745);
         this.configuration.canvasElement2DContext.translate(-w * 0.5, -h * 0.5);
         this.configuration.canvasElement2DContext.fillStyle = color;
-        this.configuration.canvasElement2DContext.fillRect(x, y, w, h);
+        this.configuration.canvasElement2DContext.fillRect(0, 0, w, h);
         this.configuration.canvasElement2DContext.restore();
     }
 
@@ -40,10 +40,10 @@ class DrawingsFeature extends CEFeatureBase {
 
     blitAndRotate(x: number, y: number, image: CEImage, angle : number) {
         this.configuration.canvasElement2DContext.save();
-        this.configuration.canvasElement2DContext.translate(image.imageObject.width * 0.5, image.imageObject.height * 0.5);
-        this.configuration.canvasElement2DContext.rotate(angle* 0.01745);
+        this.configuration.canvasElement2DContext.translate(x+(image.imageObject.width * 0.5), y+(image.imageObject.height * 0.5));
+        this.configuration.canvasElement2DContext.rotate(angle * 0.01745);
         this.configuration.canvasElement2DContext.translate(-image.imageObject.width * 0.5, -image.imageObject.height * 0.5);
-        this.configuration.canvasElement2DContext.drawImage(image.imageObject, x, y);
+        this.configuration.canvasElement2DContext.drawImage(image.imageObject, 0, 0);
         this.configuration.canvasElement2DContext.restore();
     }
 
