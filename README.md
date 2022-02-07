@@ -69,6 +69,12 @@ catyen.loop.requestFrame(()=>{});
  catyen.draw.fillRect(10,10,10,10,"white");
 ```
 
+### Fill rect and rotate
+
+```ts
+ catyen.draw.fillRectAndRotate(10,10,10,10,"white",10);
+```
+
 ### Draw line 
 
 ```ts
