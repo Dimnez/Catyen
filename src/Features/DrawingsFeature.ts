@@ -14,6 +14,17 @@ class DrawingsFeature extends CEFeatureBase {
         this.configuration.canvasElement2DContext.fillRect(x, y, w, h);
     }
 
+    fillRectAndRotate(x: number, y: number,w : number,h:number, color : string, angle : number) {
+        this.configuration.canvasElement2DContext.save();
+        this.configuration.canvasElement2DContext.translate(w * 0.5, h* 0.5);
+        this.configuration.canvasElement2DContext.rotate(angle* 0.01745);
+        this.configuration.canvasElement2DContext.translate(-w * 0.5, -h * 0.5);
+        this.configuration.canvasElement2DContext.fillStyle = color;
+        this.configuration.canvasElement2DContext.fillRect(x, y, w, h);
+        this.configuration.canvasElement2DContext.restore();
+    }
+
+
     clear(color: string) {
         this.fillRect(0, 0, this.configuration!.canvasWidth!, this.configuration!.canvasHeight!, color);
     }
@@ -35,6 +46,8 @@ class DrawingsFeature extends CEFeatureBase {
         this.configuration.canvasElement2DContext.drawImage(image.imageObject, x, y);
         this.configuration.canvasElement2DContext.restore();
     }
+
+
 
     line(x: number, y: number, tx: number, ty: number, color: string) {
         this.configuration.canvasElement2DContext.fillStyle = color;
