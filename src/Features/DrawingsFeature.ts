@@ -14,6 +14,8 @@ class DrawingsFeature extends CEFeatureBase {
         this.configuration.canvasElement2DContext.fillRect(x, y, w, h);
     }
 
+
+
     fillRectAndRotate(x: number, y: number,w : number,h:number, color : string, angle : number) {
         this.configuration.canvasElement2DContext.save();
         this.configuration.canvasElement2DContext.translate(x+w * 0.5, y+h* 0.5);
@@ -47,7 +49,10 @@ class DrawingsFeature extends CEFeatureBase {
         this.configuration.canvasElement2DContext.restore();
     }
 
-
+    getPixel(x : number,y: number)
+    {
+        return this.configuration.canvasElement2DContext.getImageData(x, y, 1, 1).data; 
+    }
 
     line(x: number, y: number, tx: number, ty: number, color: string) {
         this.configuration.canvasElement2DContext.fillStyle = color;
