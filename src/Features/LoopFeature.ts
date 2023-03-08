@@ -1,29 +1,40 @@
-import FeatureBase from './FeatureBase';
+import FeatureBase from "./FeatureBase";
 
-class LoopFeature extends FeatureBase
-{
+class LoopFeature extends FeatureBase {
+  private requestFrameFunction?: Function;
 
-    private requestFrameFunction?: Function;
+  setEvents(window: Window) {
+    window.requestAnimationFrame(() => this.doRender());
+  }
 
-    setEvents(window: Window)
-    {
-        window.requestAnimationFrame(() => this.doRender());
+  requestFrame(requestFrameFunction: Function) {
+    this.requestFrameFunction = requestFrameFunction;
+    this.setEvents(this.configuration.window!);
+  }
+
+  doRender() {
+    if (this.requestFrameFunction) {
+      this.requestFrameFunction();
     }
+    window.requestAnimationFrame(() => this.doRender());
+  }
 
-    requestFrame(requestFrameFunction : Function)
-    {
-        this.requestFrameFunction = requestFrameFunction;
-        this.setEvents(this.configuration.window!);
+  tweenTo(variable: number, to: number, step: number) : number {
+    const rest = to % step;
+    const corrigatedTo = to - rest;
+  
+    if(variable >= corrigatedTo)
+    variable = to;
+  
+    if (to > variable) {
+      variable += step;
+    } else if (to < variable) {
+      variable -= step;
     }
-
-    doRender()
-    {
-        if(this.requestFrameFunction)
-        {
-            this.requestFrameFunction();
-        }
-        window.requestAnimationFrame(() => this.doRender());
-    }
+  
+    return variable;
+  }
+  
 }
 
 export default LoopFeature;
